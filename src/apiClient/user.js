@@ -23,33 +23,15 @@
     }
     
 
-    /**
-     * 
-     * @param {Object} args
-     * @param {Object} args.params
-     * @returns {Promise<CroimoSuccessResponse>}
-     */
-    async list(args){
-        const {params} = args
-        const res = await  this.axios({
-        url:"/api/users/",
-        method:'get',
-        params
-        })
-
-        return res.data
-    }
+    
 
     /**
      * 
-     * @param {Object} args
-     * @param {String} args.id
      * @returns {Promise<CroimoSuccessResponse>}
      */
-    async retrieve(args){
-        const {id} = args
+    async retrieveMe(){
         const res = await  this.axios({
-        url:`/api/users/${id}/`,
+        url:`/api/users/me/`,
         method:'get'
         })
 
@@ -59,46 +41,23 @@
     /**
      * 
      * @param {Object} args
-     * @param {String} args.id
      * @param {Object} args.data
-     * @param {String} args.data.current_password
-     * @param {String} args.data.password
-     * @param {String} args.data.confirm_password
-     * @returns {Promise<CroimoSuccessResponse>}
-     */
-    async changePassword(args){
-        const {id,data} = args
-        const res = await  this.axios({
-        url:`/api/users/change-password/${id}/`,
-        method:'post',
-        data
-        })
-
-        return res.data
-    }
-
-    /**
-     * 
-     * @param {Object} args
-     * @param {String} args.id
-     * @param {Object} args.data
+     * @param {String} [args.data.phone]
      * @param {String} [args.data.first_name]
-     * @param {String} [args.data.last_name]
-     * @param {String} [args.data.date_of_birth]
-     * @param {String} [args.data.gender]
-     * @param {String} [args.data.phone_number]
-     * @param {String} [args.data.country]
-     * @param {String} [args.data.state]
+     * @param {String} [args.data.lastname]
      * @param {String} [args.data.city]
-     * @param {String} [args.data.street_address]
-     * @param {String} [args.data.zip_code]
-     * @param {String} [args.data.email]
+     * @param {String} [args.data.state]
+     * @param {String} [args.data.zip]
+     * @param {String} [args.data.country]
+     * @param {String} [args.data.business_name]
+     * @param {String} [args.data.name]
+     * @param {String} [args.data.url]
      * @returns {Promise<CroimoSuccessResponse>}
      */
-    async update(args){
-        const {id,data} = args
+    async updateMe(args){
+        const {data} = args
         const res = await  this.axios({
-        url:`/api/users/${id}/`,
+        url:`/api/users/me/`,
         method:'put',
         data
         })
@@ -109,24 +68,16 @@
 
     /**
      * 
-     * @param {Object} args
-     * @param {String} args.id
-     * @param {Object} args.data
-     * @param {String} args.data.password
      * @returns {Promise<CroimoSuccessResponse>}
      */
-    async delete(args){
-        const {id,data} = args
+    async deleteMe(){
         const res = await  this.axios({
-        url:`/api/users/${id}/`,
-        method:'delete',
-        data
+        url:`/api/users/me/`,
+        method:'delete'
         })
 
         return res.data
     }
-
-
 }
 
 

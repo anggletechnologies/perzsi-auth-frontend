@@ -1,6 +1,7 @@
 import {useRoutes} from 'react-router-dom';
 import routes from './routes';
-import { ThemeProvider,CircularProgress } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
+import { ThemeProvider } from '@mui/material/styles';
 import GlobalStyles from './components/GlobalStyles';
 import theme from './theme';
 import { Suspense } from 'react';
@@ -9,7 +10,6 @@ import Store from './reducers/Store';
 import {ThemeProvider as StyledThemeProvider} from "styled-components"
 import { PersistGate } from 'redux-persist/integration/react'
 import { SnackbarProvider } from 'notistack';
-import './custom.scss';
 import Zoom from '@material-ui/core/Zoom';
 
 

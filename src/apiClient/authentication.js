@@ -28,28 +28,41 @@ class Auth{
      * 
      * @param {Object} args
      * @param {Object} args.data
+     * @param {Object} args.params
+     * @param {String} args.data.username
      * @param {String} args.data.email
-     * @param {String} args.data.first_name
-     * @param {String} args.data.last_name
-     * @param {String} args.data.date_of_birth
-     * @param {String} args.data.gender
-     * @param {String} args.data.phone_number
-     * @param {String} args.data.country
-     * @param {String} args.data.state
-     * @param {String} args.data.city
-     * @param {String} args.data.street_address
-     * @param {String} args.data.zip_code
      * @param {String} args.data.password
-     * @param {String} [args.data.role]
-     * @param {String} [args.data.role_code]
      * @returns {Promise<CroimoSuccessResponse>}
      */
-    async registration(args){
-        const {data} = args
+    async register(args){
+        const {data,params={}} = args
         const res = await  this.axios({
         url:this.baseUrl+"/register/",
         method:'post',
-        data
+        data,
+        params
+        })
+
+        return res.data
+    }
+
+
+    /**
+     * 
+     * @param {Object} args
+     * @param {Object} args.data
+     * @param {Object} args.params
+     * @param {String} args.params.next
+     * @param {String} args.data.email
+     * @returns {Promise<CroimoSuccessResponse>}
+     */
+     async resendOTP(args){
+        const {data,params={}} = args
+        const res = await  this.axios({
+        url:this.baseUrl+"/resend-otp/",
+        method:'post',
+        data,
+        params
         })
 
         return res.data
@@ -59,16 +72,18 @@ class Auth{
      * 
      * @param {Object} args
      * @param {Object} args.data
+     * @param {Object} args.params
      * @param {String} args.data.email
      * @param {String} args.data.otp
      * @returns {Promise<CroimoSuccessResponse>}
      */
-    async verifyOTP(args){
-        const {data} = args
+    async verifyEmail(args){
+        const {data,params={}} = args
         const res = await  this.axios({
-        url:this.baseUrl+"/verify-otp/",
+        url:this.baseUrl+"/verify-email/",
         method:'post',
-        data
+        data,
+        params
         })
 
         return res.data
@@ -77,54 +92,42 @@ class Auth{
     /**
      * 
      * @param {Object} args
+     * @param {Object} args.params
      * @param {Object} args.data
      * @param {String} args.data.email
      * @param {String} args.data.password
      * @returns {Promise<CroimoSuccessResponse>}
      */
     async login(args){
-        const {data} = args
+        const {data,params} = args
         const res = await  this.axios({
         url:this.baseUrl+"/login/",
         method:'post',
-        data
+        data,
+        params
         })
 
         return res.data
     }
 
 
-    /**
-     * 
-     * @param {Object} args
-     * @param {Object} args.data
-     * @param {String} args.data.email
-     * @returns {Promise<CroimoSuccessResponse>}
-     */
-    async resendOTP(args){
-        const {data} = args
-        const res = await  this.axios({
-        url:this.baseUrl+"/resend-confirmation-otp/",
-        method:'post',
-        data
-        })
-
-        return res.data
-    }
+    
 
     /**
      * 
      * @param {Object} args
+     * @param {Object} args.params
      * @param {Object} args.data
      * @param {String} args.data.email
      * @returns {Promise<CroimoSuccessResponse>}
      */
-    async forgotPassword(args){
-        const {data} = args
+    async resetPassword(args){
+        const {data,params={}} = args
         const res = await  this.axios({
-        url:this.baseUrl+"/forgot-password/",
+        url:this.baseUrl+"/reset-password/",
         method:'post',
-        data
+        data,
+        params
         })
 
         return res.data
@@ -133,21 +136,69 @@ class Auth{
    
 
     /**
-     * 
      * @param {Object} args
-     * @param {String} args.token
+     * @param {Object} args.params
      * @param {Object} args.data
      * @param {String} args.data.password
-     * @param {String} args.data.confirm_password
-     * @param {String} args.data.password_reset_otp
+     * @param {String} args.data.token
      * @returns {Promise<CroimoSuccessResponse>}
      */
-    async resetPassword(args){
-        const {data,token} = args
+    async newPassword(args){
+        const {data,params={}} = args
         const res = await  this.axios({
-        url:this.baseUrl+`/reset-password/${token}/`,
+        url:this.baseUrl+`/new-password/`,
         method:'post',
-        data
+        data,
+        params
+        })
+
+        return res.data
+    }
+
+
+    /**
+     * @param {Object} args
+     * @param {Object} args.params
+     * @returns {Promise<CroimoSuccessResponse>}
+     */
+    async logout(args){
+        const {params={}} = args
+        const res = await  this.axios({
+        url:this.baseUrl+`/logout/`,
+        method:'post',
+        params
+        })
+
+        return res.data
+    }
+
+
+    /**
+     * 
+     * @returns {Promise<CroimoSuccessResponse>}
+     */
+    async refreshToken(){
+        
+        const res = await  this.axios({
+        url:this.baseUrl+`/refresh-token/`,
+        method:'post'
+        })
+
+        return res.data
+    }
+
+
+    /**
+     * @param {Object} args
+     * @param {Object} args.params
+     * @returns {Promise<CroimoSuccessResponse>}
+     */
+    async verifyToken(args){
+        const {params={}} = args
+        const res = await  this.axios({
+        url:this.baseUrl+`/verify-token/`,
+        method:'post',
+        params
         })
 
         return res.data

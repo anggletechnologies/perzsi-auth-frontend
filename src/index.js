@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import "react-phone-number-input/style.css";
 import 'react-perfect-scrollbar/dist/css/styles.css';
+
 
 // reference to react-slick 
 // https://react-slick.neostack.com/docs/get-started

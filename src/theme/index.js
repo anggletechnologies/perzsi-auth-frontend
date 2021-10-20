@@ -1,15 +1,14 @@
-import {   createTheme } from '@material-ui/core';
+import { createTheme  } from '@mui/material/styles';
 import shadows from './shadows';
 import typography from './typography';
 // import colors from './colors'
 
-const theme = createTheme({
+const theme = createTheme ({
   // colors,
   palette: {
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#3F9F98',
-      dark:'#2D736E'
+      main: '#E5B60B'
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },

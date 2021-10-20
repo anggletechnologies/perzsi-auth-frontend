@@ -13,10 +13,7 @@ function FormikErrorDisplay({formik:{errors,touched},name,children,...props}) {
 }
 
 FormikErrorDisplay.propTypes = {
-    formik:pt.objectOf({
-        errors:pt.object,
-        touched:pt.object
-    }),
+    formik:pt.object.isRequired,
     name:pt.string,
     children:pt.any
     

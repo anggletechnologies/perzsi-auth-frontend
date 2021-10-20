@@ -27,7 +27,7 @@ function AuthGaurd({children,...props}) {
             console.error(error)
             dispatch(clearUser())
             if(error?.response?.status===401){
-                navigate(genLink.signin({next:window.location.pathname}))
+                navigate(genLink.home({next:window.location.pathname}))
             }else if(!window.navigator.onLine){
                 enqueueSnackbar("error occurred check you internet connection",{variant:"error"})
             }else{
