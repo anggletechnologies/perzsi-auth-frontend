@@ -49,6 +49,7 @@ export default function ConfirmEmail() {
     }, [])
     return (
         <Box>
+            
             {(()=>{
                 switch (status) {
                         

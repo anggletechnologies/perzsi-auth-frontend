@@ -20,6 +20,7 @@
  class User{
     constructor(axios){
         this.axios = axios
+        this.baseUrl = "/account/api/users"
     }
     
 
@@ -31,7 +32,7 @@
      */
     async retrieveMe(){
         const res = await  this.axios({
-        url:`/api/users/me/`,
+        url:this.baseUrl+`/me/`,
         method:'get'
         })
 
@@ -57,7 +58,7 @@
     async updateMe(args){
         const {data} = args
         const res = await  this.axios({
-        url:`/api/users/me/`,
+        url:this.baseUrl+`/me/`,
         method:'put',
         data
         })
@@ -72,7 +73,7 @@
      */
     async deleteMe(){
         const res = await  this.axios({
-        url:`/api/users/me/`,
+        url:this.baseUrl+`/me/`,
         method:'delete'
         })
 

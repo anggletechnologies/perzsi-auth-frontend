@@ -15,7 +15,7 @@ const EmailSentConfirm = lazy(() => import('./pages/EmailSentConfirm'));
 const routes = [
    
   {
-    path: '/auth',
+    path: '/account/auth',
     element: <AuthLayout />,
     children: [
       { path: 'login', element: <Login /> },
@@ -26,11 +26,11 @@ const routes = [
       { path: 'confirm-email', element: <ConfirmEmail /> },
       { path: 'email-sent-confirm', element: <EmailSentConfirm /> },
       
-      { path: '*', element: <Navigate to="/404" /> }
+      { path: '*', element: <Navigate to="/" /> }
     ]
   },
-  { path: '*', element: <Navigate to="/auth/login" /> },
-  { path: '/404', element: <div>not found</div> }
+  // { path: '*', element: <Navigate to="/auth/login" /> },
+  // { path: '/404', element: <div>not found</div> }
     
 ];
 

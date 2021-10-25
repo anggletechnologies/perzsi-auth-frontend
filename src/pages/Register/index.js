@@ -66,6 +66,11 @@ export default function Register() {
     // console.log("errors",errors)
     return (
         <Box className=" md:w-2/6 w-full xs:mx-10" >
+          <Box display="flex" justifyContent="center">
+            <Typography variant="h2">
+              Create account
+            </Typography>
+          </Box>
           <Box my={2} >
             <Box mb={1}>
               <Typography variant="subtitle1" >

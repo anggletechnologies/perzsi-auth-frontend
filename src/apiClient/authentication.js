@@ -20,7 +20,7 @@
 class Auth{
     constructor(axios){
         this.axios = axios
-        this.baseUrl = "/api/auth"
+        this.baseUrl = "/account/api/auth"
     }
     
 

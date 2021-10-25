@@ -57,7 +57,11 @@ export default function RestPassword() {
     // console.log("errors",errors)
     return (
         <Box className=" md:w-2/6 w-full xs:mx-10" >
-          
+          <Box display="flex" justifyContent="center">
+            <Typography variant="h2">
+              Reset password
+            </Typography>
+          </Box>
           <Box my={{xs:3,md:5}}> 
             <Box mb={1}>
               <Typography variant="subtitle1" >

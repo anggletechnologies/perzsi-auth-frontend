@@ -64,5 +64,5 @@
     "redux-devtools": "^3.7.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8081"
 }

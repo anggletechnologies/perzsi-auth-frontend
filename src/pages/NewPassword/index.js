@@ -64,6 +64,11 @@ export default function NewPassword() {
     // console.log("errors",errors)
     return (
         <Box className=" md:w-2/6 w-full xs:mx-10" >
+          <Box display="flex" justifyContent="center">
+            <Typography variant="h2">
+              Create new password
+            </Typography>
+          </Box>
           <Box my={2}>
             <Box mb={1}>
               <Typography variant="subtitle1" >

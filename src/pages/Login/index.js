@@ -59,7 +59,11 @@ export default function Login() {
     
     return (
         <Box py={{xs:0,md:10}} className=" md:w-2/6 w-full xs:mx-10" >
-          
+          <Box display="flex" justifyContent="center">
+            <Typography variant="h2">
+              Login
+            </Typography>
+          </Box>
           <Box my={3}> 
             <Box mb={1}>
               <Typography variant="subtitle1" >
