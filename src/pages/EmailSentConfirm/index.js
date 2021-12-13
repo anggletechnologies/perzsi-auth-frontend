@@ -19,6 +19,7 @@ function EmailSentConfirm(props) {
     const {email,next} = useQuery()
 
     function handleResentEmailVerify() {
+        window.document.title = "Veriy email sent"
         email&&setSubmitting(true)
         email&&api.Auth.resendOTP({
             data:{email},

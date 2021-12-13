@@ -59,6 +59,10 @@ export default function NewPassword() {
       }
     })
 
+    React.useEffect(()=>{
+      window.document.title = "Create new password"
+    },[])
+
     const {getFieldProps,isSubmitting,submitForm} = formik
     // console.log("values",values)
     // console.log("errors",errors)

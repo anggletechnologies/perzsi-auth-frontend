@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputLabel, Paper, TextField, Typography } from '@mui/material'
+import { TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { useFormik } from 'formik'
 import FormikErrorDisplay from '../../components/display/FormikErrorDisplay'
@@ -8,7 +8,6 @@ import useSdk from '../../apiClient'
 import { useSnackbar } from 'notistack';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useNavigate } from 'react-router'
-import genlink from '../../utils/genLink'
 import useQuery from '../../hooks/useQuery'
 import { Link } from 'react-router-dom'
 import genLink from '../../utils/genLink'
@@ -51,6 +50,10 @@ export default function RestPassword() {
         })
       }
     })
+
+    React.useEffect(()=>{
+      window.document.title = "Reset password"
+    },[])
 
     const {getFieldProps,isSubmitting,submitForm} = formik
     // console.log("values",values)

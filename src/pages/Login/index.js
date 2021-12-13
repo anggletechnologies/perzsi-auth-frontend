@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputLabel, Paper, TextField, Typography } from '@mui/material'
+import {  TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { useFormik } from 'formik'
 import FormikErrorDisplay from '../../components/display/FormikErrorDisplay'
@@ -7,8 +7,6 @@ import * as Yup from 'yup'
 import useSdk from '../../apiClient'
 import { useSnackbar } from 'notistack';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useNavigate } from 'react-router'
-import genlink from '../../utils/genLink'
 import useQuery from '../../hooks/useQuery'
 import { Link } from 'react-router-dom'
 import genLink from '../../utils/genLink'
@@ -27,7 +25,6 @@ const validationSchema = Yup.object({
 
 export default function Login() {
     const {enqueueSnackbar,closeSnackbar} = useSnackbar()
-    const navigate = useNavigate()
     const api = useSdk()
     const {next} = useQuery()
     const formik = useFormik({
@@ -42,7 +39,7 @@ export default function Login() {
           const key = enqueueSnackbar("Login was successful",{variant:"success"})
           setTimeout(() => {
             closeSnackbar(key)
-            next&&navigate(next,{replace:true})
+            next&&(window.location.href = next)
           }, 2000);
         })
         .catch(error=>{
@@ -54,6 +51,10 @@ export default function Login() {
         })
       }
     })
+
+    React.useEffect(()=>{
+      window.document.title = "Confirm email"
+    },[])
 
     const {getFieldProps,isSubmitting,submitForm} = formik
     

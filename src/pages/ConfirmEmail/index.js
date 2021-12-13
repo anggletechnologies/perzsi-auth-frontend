@@ -1,10 +1,8 @@
 import { Box } from '@mui/system'
 import { useSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
 import useSdk from '../../apiClient'
 import useQuery from '../../hooks/useQuery'
-import genLink from '../../utils/genLink'
 import styled from 'styled-components'
 import ImageIllustration from '../../assets/confirmed.svg'
 import ImageIllustrationDenied from '../../assets/undraw_access_denied.svg'
@@ -18,12 +16,14 @@ const Image = styled.img`
 
 export default function ConfirmEmail() {
     
-    const navigate = useNavigate()
+    
     const {email,otp,next} = useQuery()
     const api = useSdk()
     const {enqueueSnackbar,closeSnackbar} = useSnackbar()
     const [status, setStatus] = useState("pending")
+    
     useEffect(() => {
+        window.document.title = "Confirm email"
         email&&otp&&api.Auth.verifyEmail({
             data:{
                 email,
@@ -36,7 +36,7 @@ export default function ConfirmEmail() {
             setStatus("success")
             next&&setTimeout(()=>{
                 closeSnackbar(key)
-                next&&navigate(next)
+                next&&(window.location.href = next)
             },4000)
         })
         .catch((error)=>{
